@@ -46,10 +46,11 @@ for name, model in models.items():
     # Zapamiętujemy wyniki do porównania
     results[name] = {'MAE': mae, 'RMSE': rmse, 'R2': r2, 'CV_mean': cv_scores.mean()}
 
-    # Zapisujemy model
+    # Zapisujemy model Z KOMPRESJĄ
+    # compress=3 to kompresja zlib - idealna dla GitHub (mały plik, szybki odczyt)
     filename = 'salary_model_rf.joblib' if 'Forest' in name else 'salary_model_lr.joblib'
-    joblib.dump(model, filename)
-    print(f"Model zapisany jako: {filename}")
+    joblib.dump(model, filename, compress=3)
+    print(f"Model zapisany jako: {filename} (skompresowany)")
 
 # 4. Podsumowanie porównawcze
 print(f"\n{'='*50}")
@@ -60,10 +61,7 @@ print(f"{'-'*52}")
 for metric in ['MAE', 'RMSE', 'R2', 'CV_mean']:
     rf_val = results['Random Forest'][metric]
     lr_val = results['Regresja Liniowa'][metric]
-    # Dla MAE i RMSE lepszy jest niższy wynik, dla R2 wyższy
-    rf_str = f"{rf_val:.3f}"
-    lr_str = f"{lr_val:.3f}"
-    print(f"{metric:<20} {rf_str:>15} {lr_str:>17}")
+    print(f"{metric:<20} {rf_val:.3f:>15} {lr_val:.3f:>17}")
 
 # 5. Wskazujemy lepszy model
 best = max(results, key=lambda x: results[x]['R2'])
