@@ -83,7 +83,7 @@ else:
             company_industry = st.selectbox("Branża", df['company_industry'].unique())
             remote_type = st.selectbox("Tryb pracy", df['remote_type'].unique())
             hiring_urgency = st.selectbox("Pilność rekrutacji", df['hiring_urgency'].unique())
-            job_openings = st.number_input("Liczba otwartych wakatów", 1, 100, 5)
+            job_openings = st.number_input("Liczba otwartych stanowisk", 1, 100, 5)
 
         st.write("### Umiejętności")
         skill_cols = st.columns(3)
@@ -133,5 +133,11 @@ else:
         selected_model = model_rf if "Random Forest" in model_choice else model_lr
         prediction = selected_model.predict(processed_input)[0]
         
-        st.success(f"### Szacowane wynagrodzenie: ${prediction:,.2f} USD")
-        st.info("Pamiętaj, że jest to wartość szacunkowa na podstawie danych historycznych.")
+        # Obliczanie widełek (na podstawie MAE z README.md)
+        mae = 2543 if "Random Forest" in model_choice else 2447
+        lower_bound = max(0, prediction - mae) # Nie chcemy pensji ujemnej
+        upper_bound = prediction + mae
+        
+        st.success(f"### Szacowane wynagrodzenie: ${prediction:,.0f} USD")
+        st.info(f"**Przewidywane widełki płacowe:** ${lower_bound:,.0f} — ${upper_bound:,.0f} USD")
+        st.write("Pamiętaj, że widełki są obliczane na podstawie średniego błędu modelu (MAE).")

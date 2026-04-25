@@ -33,8 +33,8 @@ Dane użyte w projekcie pochodzą z serwisu Kaggle:
 14. **skills_cloud** - wymóg znajomości chmury (1 - tak, 0 - nie)
 15. **job_posting_month** - miesiąc publikacji ogłoszenia
 16. **job_posting_year** - rok publikacji ogłoszenia
-17. **hiring_urgency** - pilność zatrudnienia (Low, Medium, High)
-18. **job_openings** - liczba dostępnych wakatów w ramach ogłoszenia
+17. **hiring_urgency** - pilność zatrudnienia (Low, Medium, High 
+18. **job_openings** - liczba dostępnych stanowisk w ramach ogłoszenia
 19. **salary** - roczne wynagrodzenie w USD (**zmienna docelowa**)
 
 ## Typ problemu i modelowanie
