@@ -63,6 +63,45 @@ if page == "Statystyki i Analiza":
         ax2.set_xlabel("Względna ważność")
         st.pyplot(fig2)
 
+    st.markdown("---")
+    st.subheader("Wygenerowane Wykresy Zależności")
+    st.write("Statyczne wykresy pokazujące kluczowe zależności na rynku pracy AI:")
+    
+    col_a, col_b = st.columns(2)
+    with col_a:
+        st.image("wykresy/wynagrodzenie_vs_doswiadczenie.png", use_container_width=True)
+        st.image("wykresy/wplyw_pracy_zdalnej.png", use_container_width=True)
+        st.image("wykresy/zarobki_wg_kraju.png", use_container_width=True)
+    with col_b:
+        st.image("wykresy/top_stanowiska_zarobki.png", use_container_width=True)
+        st.image("wykresy/premia_za_umiejetnosci.png", use_container_width=True)
+        st.image("wykresy/top_10_czynnikow_wplywajacych_na_wynagrodzenie.png", use_container_width=True)
+
+    st.markdown("---")
+    st.subheader("Ewaluacja Modeli Uczenia Maszynowego")
+    st.write("Porównanie jakości predykcji poszczególnych modeli na zbiorze testowym:")
+    
+    tab_rf, tab_lr = st.tabs(["🌳 Random Forest", "📈 Regresja Liniowa"])
+    
+    with tab_rf:
+        col_c, col_d = st.columns(2)
+        with col_c:
+            st.image("wykresy/rzeczywiste_vs_przewidywane_rf.png", use_container_width=True)
+            st.write("**Rzeczywiste vs Przewidywane:** Idealny model umieściłby wszystkie punkty na czerwonej linii. Rozproszenie pokazuje, gdzie model zawyża lub zaniża przewidywania.")
+        with col_d:
+            st.image("wykresy/rozklad_bledow_rf.png", use_container_width=True)
+            st.write("**Rozkład Błędów (Reszt):** Pokazuje częstotliwość poszczególnych wielkości pomyłek modelu. Idealny wykres to wąski 'dzwon' ze środkiem dokładnie w zerze.")
+            
+    with tab_lr:
+        col_e, col_f = st.columns(2)
+        with col_e:
+            st.image("wykresy/rzeczywiste_vs_przewidywane_lr.png", use_container_width=True)
+            st.write("**Rzeczywiste vs Przewidywane:** Sprawdź, jak radzi sobie prostszy model Regresji Liniowej w porównaniu do lasu losowego.")
+        with col_f:
+            st.image("wykresy/rozklad_bledow_lr.png", use_container_width=True)
+            st.write("**Rozkład Błędów (Reszt):** Zazwyczaj prosta regresja liniowa ma szerszy lub mniej symetryczny rozkład błędów niż Random Forest przy nieliniowych danych.")
+
+
 # --- SEKCJA 2: KALKULATOR ---
 else:
     st.title("💰 Kalkulator Wynagrodzenia")
