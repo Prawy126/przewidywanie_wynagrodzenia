@@ -69,13 +69,13 @@ if page == "Statystyki i Analiza":
     
     col_a, col_b = st.columns(2)
     with col_a:
-        st.image("wykresy/wynagrodzenie_vs_doswiadczenie.png", use_container_width=True)
-        st.image("wykresy/wplyw_pracy_zdalnej.png", use_container_width=True)
-        st.image("wykresy/zarobki_wg_kraju.png", use_container_width=True)
+        st.image("wykresy/wynagrodzenie_vs_doswiadczenie.png", width='stretch')
+        st.image("wykresy/wplyw_pracy_zdalnej.png", width='stretch')
+        st.image("wykresy/zarobki_wg_kraju.png", width='stretch')
     with col_b:
-        st.image("wykresy/top_stanowiska_zarobki.png", use_container_width=True)
-        st.image("wykresy/premia_za_umiejetnosci.png", use_container_width=True)
-        st.image("wykresy/top_10_czynnikow_wplywajacych_na_wynagrodzenie.png", use_container_width=True)
+        st.image("wykresy/top_stanowiska_zarobki.png", width='stretch')
+        st.image("wykresy/premia_za_umiejetnosci.png", width='stretch')
+        st.image("wykresy/top_10_czynnikow_wplywajacych_na_wynagrodzenie.png", width='stretch')
 
     st.markdown("---")
     st.subheader("Ewaluacja Modeli Uczenia Maszynowego")
@@ -86,19 +86,19 @@ if page == "Statystyki i Analiza":
     with tab_rf:
         col_c, col_d = st.columns(2)
         with col_c:
-            st.image("wykresy/rzeczywiste_vs_przewidywane_rf.png", use_container_width=True)
+            st.image("wykresy/rzeczywiste_vs_przewidywane_rf.png", width='stretch')
             st.write("**Rzeczywiste vs Przewidywane:** Idealny model umieściłby wszystkie punkty na czerwonej linii. Rozproszenie pokazuje, gdzie model zawyża lub zaniża przewidywania.")
         with col_d:
-            st.image("wykresy/rozklad_bledow_rf.png", use_container_width=True)
+            st.image("wykresy/rozklad_bledow_rf.png", width='stretch')
             st.write("**Rozkład Błędów (Reszt):** Pokazuje częstotliwość poszczególnych wielkości pomyłek modelu. Idealny wykres to wąski 'dzwon' ze środkiem dokładnie w zerze.")
             
     with tab_lr:
         col_e, col_f = st.columns(2)
         with col_e:
-            st.image("wykresy/rzeczywiste_vs_przewidywane_lr.png", use_container_width=True)
+            st.image("wykresy/rzeczywiste_vs_przewidywane_lr.png", width='stretch')
             st.write("**Rzeczywiste vs Przewidywane:** Sprawdź, jak radzi sobie prostszy model Regresji Liniowej w porównaniu do lasu losowego.")
         with col_f:
-            st.image("wykresy/rozklad_bledow_lr.png", use_container_width=True)
+            st.image("wykresy/rozklad_bledow_lr.png", width='stretch')
             st.write("**Rozkład Błędów (Reszt):** Zazwyczaj prosta regresja liniowa ma szerszy lub mniej symetryczny rozkład błędów niż Random Forest przy nieliniowych danych.")
 
 
